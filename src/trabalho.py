@@ -132,10 +132,10 @@ def construirGramatica(): # nenhuma entrada | saída: dados da gramática, FIRST
         print("Gramática é LL(1).")
         return G, FIRST, FOLLOW, tabelaLL1
 
-def parsear(tokens, tabelaLL1): 
+def parsear(tokens, tabelaLL1): # entrada: vetor de tokens, tabelaLL1
     pass # saída: estrutura de derivação para gerarArvore
 
-def lerTokens(nomeArquivoTokens):
+def lerTokens(nomeArquivoTokens): # entrada: nome do arquivo de tokens
     pass # saída: vetor de tokens estruturado
 
 def gerarArvore(derivacaoParser):
