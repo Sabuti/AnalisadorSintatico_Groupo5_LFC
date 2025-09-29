@@ -132,26 +132,93 @@ def construirGramatica(): # nenhuma entrada | saída: dados da gramática, FIRST
         print("Gramática é LL(1).")
         return G, FIRST, FOLLOW, tabelaLL1
 
-def parsear(tokens, tabelaLL1): # entrada: vetor de tokens, tabelaLL1
-    pass # saída: estrutura de derivação para gerarArvore
 
-def lerTokens(nomeArquivoTokens): # entrada: nome do arquivo de tokens
-    pass # saída: vetor de tokens estruturado
+
+def lerTokens(linha):
+    """
+    Recebe uma linha (string) e converte em lista de tokens.
+    Converte números para 'real', palavras para 'ident' (exceto RES),
+    e preserva operadores/parênteses.
+    Se encontrar erro léxico, lança ValueError.
+    """
+    tokens = []
+    token = ""
+    parenteses = 0
+    i = 0
+
+    while i < len(linha):
+        char = linha[i]
+
+        if char.isspace():  # espaço separa tokens
+            if token:
+                tokens.append(token)
+                token = ""
+        elif char in "()":  # parênteses
+            if token:
+                tokens.append(token)
+                token = ""
+            tokens.append(char)
+            if char == "(":
+                parenteses += 1
+            else:
+                parenteses -= 1
+                if parenteses < 0:
+                    raise ValueError("Parêntese fechado sem correspondente.")
+        elif char in "+-*/%^|":  # operadores
+            if token:
+                tokens.append(token)
+                token = ""
+            tokens.append(char)
+        else:  # acumula letras/números
+            token += char
+        i += 1
+
+    if token:
+        tokens.append(token)
+
+    if parenteses != 0:
+        raise ValueError("Parênteses desbalanceados.")
+
+    # converte para tokens da gramática
+    final_tokens = []
+    for t in tokens:
+        if t.replace('.', '', 1).isdigit():  # número real (aceita um '.')
+            if t.count('.') <= 1:
+                final_tokens.append('real')
+            else:
+                raise ValueError(f"Número inválido: {t}")
+        elif t.lower() == "res":
+            final_tokens.append("res")
+        elif t.isalpha():
+            final_tokens.append("ident")
+        elif t in "()*/%+^-|":
+            final_tokens.append(t)
+        else:
+            raise ValueError(f"Token inválido: {t}")
+
+    return final_tokens
+
+
+
+
 
 def gerarArvore(derivacaoParser):
     pass # saída: árvore no formato estruturado
 
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Uso: python script.py <nome_do_arquivo>")
+
     else:
         caminho = sys.argv[1]
+        linhas = []
+        tokens = []
         G, FIRST, FOLLOW, tabelaLL1 = construirGramatica() # contruindo a gramática e tabelas
         #lerArquivo(caminho, linhas) # implementar lerArquivo
-        linhas = []
-        for linha in linhas:
-            tokens = []
-            try:
-                pass
-            except ValueError as e:
-                print(e)
+        tokens = lerTokens(caminho) # lendo tokens do arquivo
+        print("Tokens lidos:", tokens)
+        derivacao = parsear(tokens, tabelaLL1) # parseando os tokens
+        print("Derivação:")
+        for step in derivacao:
+            print(f"{step[0]} -> {' '.join(step[1])}")
