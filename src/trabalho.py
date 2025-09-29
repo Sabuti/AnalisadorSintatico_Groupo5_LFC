@@ -132,7 +132,41 @@ def construirGramatica(): # nenhuma entrada | saída: dados da gramática, FIRST
         print("Gramática é LL(1).")
         return G, FIRST, FOLLOW, tabelaLL1
 
+def parsear(tokens, tabelaLL1): # entrada: vetor de tokens, tabelaLL1
+    stack = ['$', 'LINHA'] # pilha inicial com símbolo de início e marcador de fim
+    derivation = [] # para armazenar a sequência de derivações
+    index = 0 # índice para rastrear a posição atual nos tokens   
+    nonterminals = {A for (A, _) in tabelaLL1.keys()} 
 
+    def is_nonterminal(sym):
+        return sym in nonterminals # true se sym é um não-terminal em G, false é terminal
+
+    while stack:
+        top = stack.pop() # obtém o símbolo do topo da pilha
+        if index < len(tokens):
+            current_token = tokens[index] # token atual a ser processado
+        else:
+            current_token = '$' # marcador de fim de entrada
+        
+        if top == current_token == '$':
+            return derivation # análise sintática bem-sucedida
+        
+        if not is_nonterminal(top): # se o topo é um terminal
+            if top == current_token: # se coincidem, consome o token
+                index += 1
+            else:
+                raise ValueError(f"Erro de sintaxe: esperado '{top}', encontrado '{current_token}'")
+        else: # topo é um não-terminal
+            key = (top, current_token)
+            if key in tabelaLL1:
+                production = tabelaLL1[key]
+                derivation.append((top, production)) # registra a produção usada
+                for sym in reversed(production): # empilha a produção na ordem inversa
+                    if sym != EPS: # não empilha epsilon
+                        stack.append(sym)
+            else:
+                raise ValueError(f"Erro de sintaxe: não há produção para {top}, '{current_token}'")
+    raise ValueError("Erro de sintaxe: pilha vazia antes do fim dos tokens")
 
 def lerTokens(linha):
     """
