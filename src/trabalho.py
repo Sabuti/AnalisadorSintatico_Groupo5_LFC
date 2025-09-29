@@ -233,14 +233,35 @@ def lerTokens(linha):
     return final_tokens
 
 
-
-
-
 def gerarArvore(derivacaoParser):
     pass # saída: árvore no formato estruturado
 
-
 if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Uso: python script.py <nome_do_arquivo>")
+    else:
+        caminho = sys.argv[1]
+        G, FIRST, FOLLOW, tabelaLL1 = construirGramatica()
+
+        with open(caminho, "r", encoding="utf-8") as f:
+            for numero_linha, linha in enumerate(f, start=1):
+                linha = linha.strip()
+                if not linha:
+                    continue
+
+                print(f"\nLinha {numero_linha}: {linha}")
+                try:
+                    tokens = lerTokens(linha)
+                    print("Tokens lidos:", tokens)
+                    derivacao = parsear(tokens, tabelaLL1)
+                    print("Derivação:")
+                    for step in derivacao:
+                        print(f"{step[0]} -> {' '.join(step[1])}")
+                except Exception as e:
+                    print(f"Erro na linha {numero_linha}: {e}")
+                    continue
+
+"""if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Uso: python script.py <nome_do_arquivo>")
 
@@ -255,4 +276,4 @@ if __name__ == "__main__":
         derivacao = parsear(tokens, tabelaLL1) # parseando os tokens
         print("Derivação:")
         for step in derivacao:
-            print(f"{step[0]} -> {' '.join(step[1])}")
+            print(f"{step[0]} -> {' '.join(step[1])}")"""
