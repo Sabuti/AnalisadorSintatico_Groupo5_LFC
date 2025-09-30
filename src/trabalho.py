@@ -221,9 +221,9 @@ def lerTokens(linha):
                 final_tokens.append('real')
             else:
                 raise ValueError(f"Número inválido: {t}")
-        elif t.lower() == "res":
+        elif t.lower() == "res" and t.isupper():
             final_tokens.append("res")
-        elif t.isalpha():
+        elif t.isalpha() and t.isupper():
             final_tokens.append("ident")
         elif t in "()*/%+^-|":
             final_tokens.append(t)
