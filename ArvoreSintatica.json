@@ -1,0 +1,1143 @@
+{
+  "label": "LINHAS",
+  "is_nonterminal": true,
+  "children": [
+    {
+      "label": "LINHA",
+      "is_nonterminal": true,
+      "children": [
+        {
+          "label": "EXPR",
+          "is_nonterminal": true,
+          "children": [
+            {
+              "label": "(",
+              "is_nonterminal": false,
+              "children": []
+            },
+            {
+              "label": "RPN_SEQ",
+              "is_nonterminal": true,
+              "children": [
+                {
+                  "label": "TOKEN",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "EXPR",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "(",
+                          "is_nonterminal": false,
+                          "children": []
+                        },
+                        {
+                          "label": "RPN_SEQ",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "TOKEN",
+                              "is_nonterminal": true,
+                              "children": [
+                                {
+                                  "label": "NUMERO",
+                                  "is_nonterminal": true,
+                                  "children": [
+                                    {
+                                      "label": "real",
+                                      "is_nonterminal": false,
+                                      "children": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "label": "RPN_TAIL",
+                              "is_nonterminal": true,
+                              "children": [
+                                {
+                                  "label": "TOKEN",
+                                  "is_nonterminal": true,
+                                  "children": [
+                                    {
+                                      "label": "NUMERO",
+                                      "is_nonterminal": true,
+                                      "children": [
+                                        {
+                                          "label": "real",
+                                          "is_nonterminal": false,
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "RPN_TAIL",
+                                  "is_nonterminal": true,
+                                  "children": [
+                                    {
+                                      "label": "TOKEN",
+                                      "is_nonterminal": true,
+                                      "children": [
+                                        {
+                                          "label": "OPERADOR",
+                                          "is_nonterminal": true,
+                                          "children": [
+                                            {
+                                              "label": "+",
+                                              "is_nonterminal": false,
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "label": "RPN_TAIL",
+                                      "is_nonterminal": true,
+                                      "children": [
+                                        {
+                                          "label": "ε",
+                                          "is_nonterminal": false,
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "label": ")",
+                          "is_nonterminal": false,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "RPN_TAIL",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "TOKEN",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "NUMERO",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "real",
+                              "is_nonterminal": false,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "label": "RPN_TAIL",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "TOKEN",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "OPERADOR",
+                              "is_nonterminal": true,
+                              "children": [
+                                {
+                                  "label": "|",
+                                  "is_nonterminal": false,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "label": "RPN_TAIL",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "ε",
+                              "is_nonterminal": false,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": ")",
+              "is_nonterminal": false,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "LINHA",
+      "is_nonterminal": true,
+      "children": [
+        {
+          "label": "EXPR",
+          "is_nonterminal": true,
+          "children": [
+            {
+              "label": "(",
+              "is_nonterminal": false,
+              "children": []
+            },
+            {
+              "label": "RPN_SEQ",
+              "is_nonterminal": true,
+              "children": [
+                {
+                  "label": "TOKEN",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "NUMERO",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "real",
+                          "is_nonterminal": false,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "RPN_TAIL",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "TOKEN",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "EXPR",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "(",
+                              "is_nonterminal": false,
+                              "children": []
+                            },
+                            {
+                              "label": "RPN_SEQ",
+                              "is_nonterminal": true,
+                              "children": [
+                                {
+                                  "label": "TOKEN",
+                                  "is_nonterminal": true,
+                                  "children": [
+                                    {
+                                      "label": "NUMERO",
+                                      "is_nonterminal": true,
+                                      "children": [
+                                        {
+                                          "label": "real",
+                                          "is_nonterminal": false,
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "RPN_TAIL",
+                                  "is_nonterminal": true,
+                                  "children": [
+                                    {
+                                      "label": "TOKEN",
+                                      "is_nonterminal": true,
+                                      "children": [
+                                        {
+                                          "label": "NUMERO",
+                                          "is_nonterminal": true,
+                                          "children": [
+                                            {
+                                              "label": "real",
+                                              "is_nonterminal": false,
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "label": "RPN_TAIL",
+                                      "is_nonterminal": true,
+                                      "children": [
+                                        {
+                                          "label": "TOKEN",
+                                          "is_nonterminal": true,
+                                          "children": [
+                                            {
+                                              "label": "OPERADOR",
+                                              "is_nonterminal": true,
+                                              "children": [
+                                                {
+                                                  "label": "/",
+                                                  "is_nonterminal": false,
+                                                  "children": []
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "label": "RPN_TAIL",
+                                          "is_nonterminal": true,
+                                          "children": [
+                                            {
+                                              "label": "ε",
+                                              "is_nonterminal": false,
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "label": ")",
+                              "is_nonterminal": false,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "label": "RPN_TAIL",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "TOKEN",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "OPERADOR",
+                              "is_nonterminal": true,
+                              "children": [
+                                {
+                                  "label": "-",
+                                  "is_nonterminal": false,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "label": "RPN_TAIL",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "ε",
+                              "is_nonterminal": false,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": ")",
+              "is_nonterminal": false,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "LINHA",
+      "is_nonterminal": true,
+      "children": [
+        {
+          "label": "EXPR",
+          "is_nonterminal": true,
+          "children": [
+            {
+              "label": "(",
+              "is_nonterminal": false,
+              "children": []
+            },
+            {
+              "label": "RPN_SEQ",
+              "is_nonterminal": true,
+              "children": [
+                {
+                  "label": "TOKEN",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "EXPR",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "(",
+                          "is_nonterminal": false,
+                          "children": []
+                        },
+                        {
+                          "label": "RPN_SEQ",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "TOKEN",
+                              "is_nonterminal": true,
+                              "children": [
+                                {
+                                  "label": "NUMERO",
+                                  "is_nonterminal": true,
+                                  "children": [
+                                    {
+                                      "label": "real",
+                                      "is_nonterminal": false,
+                                      "children": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "label": "RPN_TAIL",
+                              "is_nonterminal": true,
+                              "children": [
+                                {
+                                  "label": "TOKEN",
+                                  "is_nonterminal": true,
+                                  "children": [
+                                    {
+                                      "label": "NUMERO",
+                                      "is_nonterminal": true,
+                                      "children": [
+                                        {
+                                          "label": "real",
+                                          "is_nonterminal": false,
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "RPN_TAIL",
+                                  "is_nonterminal": true,
+                                  "children": [
+                                    {
+                                      "label": "TOKEN",
+                                      "is_nonterminal": true,
+                                      "children": [
+                                        {
+                                          "label": "OPERADOR",
+                                          "is_nonterminal": true,
+                                          "children": [
+                                            {
+                                              "label": "+",
+                                              "is_nonterminal": false,
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "label": "RPN_TAIL",
+                                      "is_nonterminal": true,
+                                      "children": [
+                                        {
+                                          "label": "ε",
+                                          "is_nonterminal": false,
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "label": ")",
+                          "is_nonterminal": false,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "RPN_TAIL",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "TOKEN",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "EXPR",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "(",
+                              "is_nonterminal": false,
+                              "children": []
+                            },
+                            {
+                              "label": "RPN_SEQ",
+                              "is_nonterminal": true,
+                              "children": [
+                                {
+                                  "label": "TOKEN",
+                                  "is_nonterminal": true,
+                                  "children": [
+                                    {
+                                      "label": "NUMERO",
+                                      "is_nonterminal": true,
+                                      "children": [
+                                        {
+                                          "label": "real",
+                                          "is_nonterminal": false,
+                                          "children": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "RPN_TAIL",
+                                  "is_nonterminal": true,
+                                  "children": [
+                                    {
+                                      "label": "TOKEN",
+                                      "is_nonterminal": true,
+                                      "children": [
+                                        {
+                                          "label": "NUMERO",
+                                          "is_nonterminal": true,
+                                          "children": [
+                                            {
+                                              "label": "real",
+                                              "is_nonterminal": false,
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "label": "RPN_TAIL",
+                                      "is_nonterminal": true,
+                                      "children": [
+                                        {
+                                          "label": "TOKEN",
+                                          "is_nonterminal": true,
+                                          "children": [
+                                            {
+                                              "label": "OPERADOR",
+                                              "is_nonterminal": true,
+                                              "children": [
+                                                {
+                                                  "label": "*",
+                                                  "is_nonterminal": false,
+                                                  "children": []
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "label": "RPN_TAIL",
+                                          "is_nonterminal": true,
+                                          "children": [
+                                            {
+                                              "label": "ε",
+                                              "is_nonterminal": false,
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "label": ")",
+                              "is_nonterminal": false,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "label": "RPN_TAIL",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "TOKEN",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "OPERADOR",
+                              "is_nonterminal": true,
+                              "children": [
+                                {
+                                  "label": "-",
+                                  "is_nonterminal": false,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "label": "RPN_TAIL",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "ε",
+                              "is_nonterminal": false,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": ")",
+              "is_nonterminal": false,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "LINHA",
+      "is_nonterminal": true,
+      "children": [
+        {
+          "label": "EXPR",
+          "is_nonterminal": true,
+          "children": [
+            {
+              "label": "(",
+              "is_nonterminal": false,
+              "children": []
+            },
+            {
+              "label": "RPN_SEQ",
+              "is_nonterminal": true,
+              "children": [
+                {
+                  "label": "TOKEN",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "NUMERO",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "real",
+                          "is_nonterminal": false,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "RPN_TAIL",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "TOKEN",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "IDENT",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "ident",
+                              "is_nonterminal": false,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "label": "RPN_TAIL",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "ε",
+                          "is_nonterminal": false,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": ")",
+              "is_nonterminal": false,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "LINHA",
+      "is_nonterminal": true,
+      "children": [
+        {
+          "label": "EXPR",
+          "is_nonterminal": true,
+          "children": [
+            {
+              "label": "(",
+              "is_nonterminal": false,
+              "children": []
+            },
+            {
+              "label": "RPN_SEQ",
+              "is_nonterminal": true,
+              "children": [
+                {
+                  "label": "TOKEN",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "NUMERO",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "real",
+                          "is_nonterminal": false,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "RPN_TAIL",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "TOKEN",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "NUMERO",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "real",
+                              "is_nonterminal": false,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "label": "RPN_TAIL",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "TOKEN",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "IDENT",
+                              "is_nonterminal": true,
+                              "children": [
+                                {
+                                  "label": "ident",
+                                  "is_nonterminal": false,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "label": "RPN_TAIL",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "TOKEN",
+                              "is_nonterminal": true,
+                              "children": [
+                                {
+                                  "label": "OPERADOR",
+                                  "is_nonterminal": true,
+                                  "children": [
+                                    {
+                                      "label": "-",
+                                      "is_nonterminal": false,
+                                      "children": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "label": "RPN_TAIL",
+                              "is_nonterminal": true,
+                              "children": [
+                                {
+                                  "label": "ε",
+                                  "is_nonterminal": false,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": ")",
+              "is_nonterminal": false,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "LINHA",
+      "is_nonterminal": true,
+      "children": [
+        {
+          "label": "EXPR",
+          "is_nonterminal": true,
+          "children": [
+            {
+              "label": "(",
+              "is_nonterminal": false,
+              "children": []
+            },
+            {
+              "label": "RPN_SEQ",
+              "is_nonterminal": true,
+              "children": [
+                {
+                  "label": "TOKEN",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "NUMERO",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "real",
+                          "is_nonterminal": false,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "RPN_TAIL",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "TOKEN",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "NUMERO",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "real",
+                              "is_nonterminal": false,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "label": "RPN_TAIL",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "TOKEN",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "OPERADOR",
+                              "is_nonterminal": true,
+                              "children": [
+                                {
+                                  "label": "%",
+                                  "is_nonterminal": false,
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "label": "RPN_TAIL",
+                          "is_nonterminal": true,
+                          "children": [
+                            {
+                              "label": "ε",
+                              "is_nonterminal": false,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": ")",
+              "is_nonterminal": false,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "LINHA",
+      "is_nonterminal": true,
+      "children": [
+        {
+          "label": "EXPR",
+          "is_nonterminal": true,
+          "children": [
+            {
+              "label": "(",
+              "is_nonterminal": false,
+              "children": []
+            },
+            {
+              "label": "RPN_SEQ",
+              "is_nonterminal": true,
+              "children": [
+                {
+                  "label": "TOKEN",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "NUMERO",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "real",
+                          "is_nonterminal": false,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "RPN_TAIL",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "TOKEN",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "res",
+                          "is_nonterminal": false,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "label": "RPN_TAIL",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "ε",
+                          "is_nonterminal": false,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": ")",
+              "is_nonterminal": false,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "LINHA",
+      "is_nonterminal": true,
+      "children": [
+        {
+          "label": "EXPR",
+          "is_nonterminal": true,
+          "children": [
+            {
+              "label": "(",
+              "is_nonterminal": false,
+              "children": []
+            },
+            {
+              "label": "RPN_SEQ",
+              "is_nonterminal": true,
+              "children": [
+                {
+                  "label": "TOKEN",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "IDENT",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "ident",
+                          "is_nonterminal": false,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "RPN_TAIL",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "ε",
+                      "is_nonterminal": false,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": ")",
+              "is_nonterminal": false,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "LINHA",
+      "is_nonterminal": true,
+      "children": [
+        {
+          "label": "EXPR",
+          "is_nonterminal": true,
+          "children": [
+            {
+              "label": "(",
+              "is_nonterminal": false,
+              "children": []
+            },
+            {
+              "label": "RPN_SEQ",
+              "is_nonterminal": true,
+              "children": [
+                {
+                  "label": "TOKEN",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "IDENT",
+                      "is_nonterminal": true,
+                      "children": [
+                        {
+                          "label": "ident",
+                          "is_nonterminal": false,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "RPN_TAIL",
+                  "is_nonterminal": true,
+                  "children": [
+                    {
+                      "label": "ε",
+                      "is_nonterminal": false,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": ")",
+              "is_nonterminal": false,
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
