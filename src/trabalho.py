@@ -243,57 +243,59 @@ def lerTokens(linha):
 
     return final_tokens
 
-def gerarArvore(derivacoes_por_linha):
-    """
-    Recebe uma lista de derivações por linha e gera uma árvore sintática única,
-    com uma raiz LINHAS e cada linha como sub-árvore.
-    """
-    root = Node("LINHAS", is_nonterminal=True)
+def gerarArvore(derivacoes_por_linha): # entrada: lista de listas de derivações por linha | saída: raiz da árvore sintática
 
-    for derivacoes in derivacoes_por_linha:  # derivacoes = lista de tuplas (lhs, prod) por linha
+    root = Node("LINHAS", is_nonterminal=True) # raiz da árvore sintática
+
+    nonterminals = set()
+    for derivacoes in derivacoes_por_linha: # coleta todos os não-terminais usados
+        for step in derivacoes:
+            nonterminals.add(step[0]) # step[0] é o LHS da produção
+
+    def construir_arvore_recursiva(derivacoes, index): # constrói a árvore recursivamente
+        lhs, prod = derivacoes[index] # lhs é o lado esquerdo, prod é a produção (lado direito)
+        i = index + 1
+
+        node = Node(lhs, is_nonterminal=True) # cria nó para o não-terminal atual
+        for sym in prod:
+            if sym in nonterminals:  # não-terminal 
+                child, i = construir_arvore_recursiva(derivacoes, i)
+                node.add_child(child)
+            else:  # terminal
+                node.add_child(Node(sym, is_nonterminal=False))
+        return node, i
+
+    for derivacoes in derivacoes_por_linha:
         if not derivacoes:
-            continue
-
-        nonterminals = {step[0] for step in derivacoes}
-
-        def construir_arvore_recursiva(index):
-            lhs, prod = derivacoes[index]
-            node = Node(lhs, is_nonterminal=True)
-            i = index + 1
-            for sym in prod:
-                if sym in nonterminals:
-                    child, i = construir_arvore_recursiva(i)
-                    node.add_child(child)
-                else:
-                    node.add_child(Node(sym))
-            return node, i
-
-        linha_root, _ = construir_arvore_recursiva(0)
+            continue # pula linhas sem derivações
+        linha_root, _ = construir_arvore_recursiva(derivacoes, 0)
         root.add_child(linha_root)
 
-    # função para imprimir a árvore em ASCII
+    # Impressão ASCII simples da árvore
     def ascii_tree(node, prefix="", is_last=True):
-        lines = []
         connector = "└─ " if is_last else "├─ "
-        lines.append(prefix + connector + node.label)
-        new_prefix = prefix + ("   " if is_last else "|  ")
+        print(prefix + connector + node.label)
+        new_prefix = prefix + ("   " if is_last else "│  ")
         for i, c in enumerate(node.children):
-            lines.extend(ascii_tree(c, new_prefix, i == len(node.children) - 1))
-        return lines
+            ascii_tree(c, new_prefix, i == len(node.children) - 1)
 
-    # imprime
     print("\nÁrvore sintática (ASCII):\n")
-    print(root.label)
-    for i, child in enumerate(root.children):
-        print("\n".join(ascii_tree(child, "", i == len(root.children) - 1)))
+    ascii_tree(root)
 
-    # salva JSON
+    # Exporta em JSON
+    def to_dict(node):
+        return {
+            "label": node.label,
+            "is_nonterminal": node.is_nonterminal,
+            "children": [to_dict(c) for c in node.children]
+        }
+
     json_name = "ArvoreSintatica.json"
     with open(json_name, "w", encoding="utf-8") as jf:
-        json.dump(root.to_dict(), jf, ensure_ascii=False, indent=2)
-    print(f"\nÁrvore salva em JSON: {os.path.abspath(json_name)}")
+        json.dump(to_dict(root), jf, ensure_ascii=False, indent=2)
 
-    return root.to_dict()
+    print(f"\nÁrvore salva em JSON: {os.path.relpath(json_name)}")
+    return to_dict(root)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
