@@ -4,9 +4,20 @@
 #
 # Nome do grupo no Canvas: RA2 5
 
-import sys # import para gerenciar argumentos de linha de comando
+import sys # para gerenciar argumentos de linha de comando
+import json # para salvar o arquivo da arvore sintatica
+import os # para organizar onde salvar o arquivo da arvore sintatica
 
 EPS = 'ε' # símbolo para epsilon / vazio
+
+class Node: # Usado na árvore sintática
+    def __init__(self, label, is_nonterminal=False):
+        self.label = label
+        self.children = []
+        self.is_nonterminal = is_nonterminal # para não terminais
+
+    def add_child(self, node): 
+        self.children.append(node)
 
 def construirGramatica(): # nenhuma entrada | saída: dados da gramática, FIRST, FOLLOW, tabelaLL1
 
@@ -232,9 +243,57 @@ def lerTokens(linha):
 
     return final_tokens
 
+def gerarArvore(derivacoes_por_linha):
+    """
+    Recebe uma lista de derivações por linha e gera uma árvore sintática única,
+    com uma raiz LINHAS e cada linha como sub-árvore.
+    """
+    root = Node("LINHAS", is_nonterminal=True)
 
-def gerarArvore(derivacaoParser):
-    pass # saída: árvore no formato estruturado
+    for derivacoes in derivacoes_por_linha:  # derivacoes = lista de tuplas (lhs, prod) por linha
+        if not derivacoes:
+            continue
+
+        nonterminals = {step[0] for step in derivacoes}
+
+        def construir_arvore_recursiva(index):
+            lhs, prod = derivacoes[index]
+            node = Node(lhs, is_nonterminal=True)
+            i = index + 1
+            for sym in prod:
+                if sym in nonterminals:
+                    child, i = construir_arvore_recursiva(i)
+                    node.add_child(child)
+                else:
+                    node.add_child(Node(sym))
+            return node, i
+
+        linha_root, _ = construir_arvore_recursiva(0)
+        root.add_child(linha_root)
+
+    # função para imprimir a árvore em ASCII
+    def ascii_tree(node, prefix="", is_last=True):
+        lines = []
+        connector = "└─ " if is_last else "├─ "
+        lines.append(prefix + connector + node.label)
+        new_prefix = prefix + ("   " if is_last else "|  ")
+        for i, c in enumerate(node.children):
+            lines.extend(ascii_tree(c, new_prefix, i == len(node.children) - 1))
+        return lines
+
+    # imprime
+    print("\nÁrvore sintática (ASCII):\n")
+    print(root.label)
+    for i, child in enumerate(root.children):
+        print("\n".join(ascii_tree(child, "", i == len(root.children) - 1)))
+
+    # salva JSON
+    json_name = "ArvoreSintatica.json"
+    with open(json_name, "w", encoding="utf-8") as jf:
+        json.dump(root.to_dict(), jf, ensure_ascii=False, indent=2)
+    print(f"\nÁrvore salva em JSON: {os.path.abspath(json_name)}")
+
+    return root.to_dict()
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
@@ -242,6 +301,7 @@ if __name__ == "__main__":
     else:
         caminho = sys.argv[1]
         G, FIRST, FOLLOW, tabelaLL1 = construirGramatica()
+        todas_derivacoes_por_linha = [] # para armazenar derivações de todas as linhas
 
         with open(caminho, "r", encoding="utf-8") as f:
             for numero_linha, linha in enumerate(f, start=1):
@@ -257,23 +317,9 @@ if __name__ == "__main__":
                     print("Derivação:")
                     for step in derivacao:
                         print(f"{step[0]} -> {' '.join(step[1])}")
+                    todas_derivacoes_por_linha.append(derivacao)
                 except Exception as e:
                     print(f"Erro na linha {numero_linha}: {e}")
                     continue
-
-"""if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Uso: python script.py <nome_do_arquivo>")
-
-    else:
-        caminho = sys.argv[1]
-        linhas = []
-        tokens = []
-        G, FIRST, FOLLOW, tabelaLL1 = construirGramatica() # contruindo a gramática e tabelas
-        #lerArquivo(caminho, linhas) # implementar lerArquivo
-        tokens = lerTokens(caminho) # lendo tokens do arquivo
-        print("Tokens lidos:", tokens)
-        derivacao = parsear(tokens, tabelaLL1) # parseando os tokens
-        print("Derivação:")
-        for step in derivacao:
-            print(f"{step[0]} -> {' '.join(step[1])}")"""
+        if todas_derivacoes_por_linha:
+            gerarArvore(todas_derivacoes_por_linha) # gera árvore sintática 1x para todas as linhas
