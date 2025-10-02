@@ -7,6 +7,7 @@
 import sys # para gerenciar argumentos de linha de comando
 import json # para salvar o arquivo da arvore sintatica
 import os # para organizar onde salvar o arquivo da arvore sintatica
+import numpy as np # para float16
 
 EPS = 'ε' # símbolo para epsilon / vazio
 
@@ -229,7 +230,12 @@ def lerTokens(linha):
     for t in tokens:
         if t.replace('.', '', 1).isdigit():  # número real (aceita um '.')
             if t.count('.') <= 1:
-                final_tokens.append('real')
+                try:
+                    num = float(t)
+                    if np.isfinite(np.float16(num)):
+                        final_tokens.append('real')
+                except:
+                    raise ValueError(f"Número fora do intervalo para float16: {t}")
             else:
                 raise ValueError(f"Número inválido: {t}")
         elif t.lower() == "res" and t.isupper():
